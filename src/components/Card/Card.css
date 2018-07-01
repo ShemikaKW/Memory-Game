@@ -4,6 +4,7 @@
   } */
 
 .cardImg {
-  width: 235px;
-  height: 235px;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
 }
