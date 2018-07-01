@@ -1,20 +1,20 @@
 import React from "react";
 import "./Nav.css";
 
-const Nav = () => (
+const Nav = (props) => (
 
   <nav className="nav nav-pills nav-fill">
 
     <li className="nav-item">
-      <a className='nav-link' href='/'>Clicky Game</a>
+      <a className='nav-link' href='/'>{props.brand}</a>
     </li>
 
     <li className="nav-item navbar-text">
-      Click an image to begin!
+      {props.navText}
     </li>
 
     <li className="nav-item navbar-text">
-      Score: 0  |  Top Score： 0
+      Score: {props.score} | Top Score: {props.topScore}
     </li>
 
   </nav>
