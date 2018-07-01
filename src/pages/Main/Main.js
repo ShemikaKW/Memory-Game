@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Nav from "../../components/Nav";
+import { Container } from "../../components/Grid";
 import './Main.css'
-
-// import { Col, Row, Container } from "../../components/Grid";
-
-// import DeleteBtn from "../../components/DeleteBtn";
-// import { List, ListItem } from "../../components/List";
-// import { Input, TextArea, FormBtn } from "../../components/Form";
-
 
 class Main extends Component {
 
@@ -30,11 +24,12 @@ class Main extends Component {
 
     render() {
         return (
-            <Nav>
-            <Jumbotron />
-            </Nav>
-
-        )};
+            <Container fluid>
+                <Nav />
+                <Jumbotron />
+            </Container>
+        )
+    };
 }
 
 export default Main;
