@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import Nav from "../../components/Nav";
 import Jumbotron from "../../components/Jumbotron";
-import { Col, Row, Container } from "../../components/Grid";
+import Nav from "../../components/Nav";
+import './Main.css'
+
+// import { Col, Row, Container } from "../../components/Grid";
 
 // import DeleteBtn from "../../components/DeleteBtn";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 
 
-class Main extends React.Component {
+class Main extends Component {
 
     state = {
         score: '0',
@@ -28,9 +30,10 @@ class Main extends React.Component {
 
     render() {
         return (
-            <Nav> 
+            <Nav>
             <Jumbotron />
             </Nav>
+
         )};
 }
 
