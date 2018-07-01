@@ -30,9 +30,38 @@ class Main extends Component {
         });
     };
 
-    shuffleCards = () => {
 
-    }
+    imgClickFunc = (id) => {
+        if(this.state.selectedDog.indexOf(id) === -1) {
+            
+            let newScore = this.state.score + 1;
+            this.state.selectedDog.push(id);
+  
+            if(this.state.score >= this.state.topScore) {
+                this.setState({score: newScore, topScore:newScore});
+            } else {
+                this.setState({score: newScore})
+            };
+            this.doShuffleCard();
+        } else {
+            this.setState({score: 0, selectedDog: []})
+        }
+    };
+
+    shuffleCards = (arr) => {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    };
+
+    doShuffleCard = () => {
+        let shuffledDog = this.shuffleCards(Dog);
+        this.setState({
+            dogs: shuffledDog
+        })
+    };
 
     render() {
         return (
@@ -47,7 +76,12 @@ class Main extends Component {
                 <Container>
                 <Row>
                 {this.state.dogs.map(dog => {
-                    return (<Card key = {dog.id} id = {dog.id} url = {dog.url} name ={dog.name}/> )
+                    return (<Card 
+                        key = {dog.id} 
+                        id = {dog.id} 
+                        url = {dog.url}
+                        imgClickFunc = {this.imgClickFunc}
+                    name ={dog.name} /> )
                 })}
                 </Row>
                 </Container>
