@@ -37,7 +37,7 @@ class Main extends Component {
 
         this.setState({navMessage: ''});
 
-        if(this.state.selectedDog.indexOf(id) === -1 && this.state.selectedDog.length === 12) {
+        if(this.state.selectedDog.indexOf(id) === -1 && this.state.selectedDog.length === 11) {
             this.setState({score: 12, topScore:12, navMessage: 'You Win!',
         });
             return;
