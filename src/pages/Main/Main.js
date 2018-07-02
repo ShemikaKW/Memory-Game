@@ -15,6 +15,7 @@ class Main extends Component {
         score: 0,
         topScore: 0,
         selectedDog: [], 
+        navMessage: '',
     };
 
     componentDidMount() {
@@ -26,14 +27,24 @@ class Main extends Component {
             dogs: Dog,
             score: 0,
             topScore: 0,
-            selectedDog: []
+            selectedDog: [],
+            navMessage: 'Click an image to begin!',
         });
     };
 
 
     imgClickFunc = (id) => {
+
+        this.setState({navMessage: ''});
+
+        if(this.state.selectedDog.indexOf(id) === -1 && this.state.selectedDog.length === 12) {
+            this.setState({score: 12, topScore:12, navMessage: 'You Win!',
+        });
+            return;
+        }
+
         if(this.state.selectedDog.indexOf(id) === -1) {
-            
+
             let newScore = this.state.score + 1;
             this.state.selectedDog.push(id);
   
@@ -44,6 +55,7 @@ class Main extends Component {
             };
             this.doShuffleCard();
         } else {
+            this.setState({navMessage: 'Ops... Wrong Guess!'})
             this.setState({score: 0, selectedDog: []})
         }
     };
@@ -68,7 +80,7 @@ class Main extends Component {
             <Container fluid>
 
                 <Nav score = {this.state.score} topScore = {this.state.topScore}  
-                brand = {'Clicky Game'} navText = 'Click an image to begin!'/>
+                brand = {'Clicky Game'} navText =  {this.state.navMessage}/>
 
                 <Jumbotron title = {'Clicky Game'} 
                 subLine = {`Click on an image to earn points, but don't click on any more than once!`} />
