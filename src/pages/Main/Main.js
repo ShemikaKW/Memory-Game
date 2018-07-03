@@ -38,18 +38,20 @@ class Main extends Component {
         this.setState({navMessage: ''});
 
         if(this.state.selectedDog.indexOf(id) === -1 && this.state.selectedDog.length === 11) {
-            this.setState({score: 12, topScore:12, navMessage: 'You Win!',
+            this.setState({score: 12, topScore:12, navMessage: 'You Win!', selectedDog: []
         });
             return;
         }
 
         if(this.state.selectedDog.indexOf(id) === -1) {
 
-            let newScore = this.state.score + 1;
+            let newScore = (this.state.score + 1)%12;
             this.state.selectedDog.push(id);
   
-            if(this.state.score >= this.state.topScore) {
+            if(this.state.score >= this.state.topScore && this.state.topScore !==12) {
                 this.setState({score: newScore, topScore:newScore});
+            } else if (this.state.score >= this.state.topScore && this.state.topScore ===12 ) {
+                this.setState({score: newScore});
             } else {
                 this.setState({score: newScore})
             };
